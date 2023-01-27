@@ -12,13 +12,13 @@ const UserForm = (props) => {
     const [errorPassword, seterrorPassword] = useState("")
     const [confpassword, setConfpassword] = useState("");
     const [errorConfPassword, seterrorConfPassword] = useState("")
-    const [hasBeenSubmitted, setHasBeenSubmitted] = useState(true);
+    const [passerror] = useState("");
 
     const createUser = (e) => {
         e.preventDefault();
         const newUser = {firstname, lastname, email, password };
         console.log("Welcome", newUser);
-        setHasBeenSubmitted( password === confpassword );
+        passerror( password === confpassword );
     };
 
     const handleFirstName = (e) => {
@@ -109,7 +109,7 @@ const UserForm = (props) => {
                     errorConfPassword ? <p>{errorConfPassword}</p> : ''
                 }
                 {
-                    hasBeenSubmitted && <p>No coinciden los campos</p>
+                    password !== confpassword   && <p>No coinciden los campos</p>
                 }
             </div>
             
